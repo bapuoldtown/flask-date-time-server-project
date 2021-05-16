@@ -2,6 +2,11 @@ from flask import Flask
 from datetime import date,datetime
 application = Flask(__name__)
 
+@application.route('/')
+def hello_world(name):
+   return "<h1>Hello , The Time now is {} , and Today is {}  </h1>".format(datetime.now().strftime("%H:%M"),date.today().strftime("%A %d %B %Y"))
+
+
 @application.route('/<string:name>')
 def hello_world(name):
    return "<h1>Hello {}, The Time now is {} , and Today is {}  </h1>".format(name.title(),datetime.now().strftime("%H:%M"),date.today().strftime("%A %d %B %Y"))
